@@ -2,8 +2,10 @@
 
 const express = require("express");
 const router = express.Router();
-const serviceMensagem = require("./services/serviceMensagem");
 
-router.post("/enviar-mensagem", serviceMensagem.enviarMensagemTelegram);
+const controllEnviarMensagem = require("./controll/controllEnviarMensagem");
+
+router.post("/enviar-mensagem", controllEnviarMensagem.enviarMensagem );
+
 
 module.exports = router;
