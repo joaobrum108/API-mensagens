@@ -3,6 +3,7 @@
 const axios = require("axios");
 
 class ServiceMensagem {
+  
   async enviarMensagemTelegram(req, res) {
     const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
     if (!TELEGRAM_TOKEN) {

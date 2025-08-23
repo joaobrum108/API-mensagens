@@ -1,6 +1,7 @@
 const serviceMensagem = require("../services/serviceMensagem");
 
 class postEnviarMensagem {
+    
     async enviarMensagem(req, res) {
         try {
             const resp = await serviceMensagem.enviarMensagemTelegram(req, res);

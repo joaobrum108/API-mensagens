@@ -1,4 +1,4 @@
-/** @format */
+
 
 const express = require("express");
 const router = express.Router();
@@ -9,7 +9,7 @@ const controllerPegarToken = require("./controll/controllerPegarToken");
 // rota de envio de mensagem
 router.post("/enviar-mensagem", controllEnviarMensagem.enviarMensagem );
 
-router.get("/pegar-token" , controllerPegarToken.pegarToken);
+router.post("/pegar-token-telegram" , controllerPegarToken.pegarToken);
 
 
 module.exports = router;
