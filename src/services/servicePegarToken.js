@@ -29,6 +29,11 @@ class ServicePegarToken {
             });
         }
     }
+
+    async mostrarToken(req, res) {
+        // const url = https://api.telegram.org/bot${process.env.USER_TOKEN}/getUpdates
+
+    }
 }
 
 module.exports = new ServicePegarToken();
