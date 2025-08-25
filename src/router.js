@@ -14,6 +14,4 @@ router.post("/enviar-mensagem", controllEnviarMensagem.enviarMensagem );
 // rota de teste de envio
 router.post("/rota-teste", controllerEnviarMensagemTeste.envios)
 
-
-
 module.exports = router;

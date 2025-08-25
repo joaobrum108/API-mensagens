@@ -17,7 +17,7 @@ class ServiceMensagem {
 
     if (!chatId) {
       return res.status(500).json({
-        message: "Chat ID não encontrado. Verifique se o usuário enviou alguma mensagem.",
+        message: "Chat ID não encontrado. Verifique se o id esta na api.",
       });
     }
 
