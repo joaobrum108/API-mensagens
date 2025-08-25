@@ -1,28 +1,25 @@
 /** @format */
-const servicePegarToken = require("../services/servicePegarToken");
+
 const axios = require("axios");
 
 class ServiceMensagem {
-
+  
   async enviarMensagemTelegram(req, res) {
-
-    const token = servicePegarToken.getToken();
-    const chatId = servicePegarToken.getChatId();
-
-    if (!token) {
+    const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+    if (!TELEGRAM_TOKEN) {
       return res.status(500).json({
         message: "Token do Telegram não configurado",
       });
     }
 
-    if (!chatId) {
-      return res.status(500).json({
-        message: "Chat ID não encontrado. Verifique se o usuário enviou alguma mensagem.",
+    const API_TELEGRAM_URL = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+    const { chatId, mensagem } = req.body;
+
+    if (!chatId || !mensagem) {
+      return res.status(400).json({
+        message: "chatId e mensagem são obrigatórios",
       });
     }
-
-    const API_TELEGRAM_URL = `https://api.telegram.org/bot${token}/sendMessage`;
-    const mensagem = "Essa mensagem é um teste";
 
     try {
       const response = await axios.post(API_TELEGRAM_URL, {
@@ -35,10 +32,7 @@ class ServiceMensagem {
         data: response.data,
       });
     } catch (error) {
-      console.error(
-        "Erro ao enviar mensagem:",
-        error.response ? error.response.data : error.message
-      );
+      console.error("Erro ao enviar mensagem:", error.response ? error.response.data : error.message);
 
       return res.status(500).json({
         message: "Erro ao enviar mensagem para o Telegram",

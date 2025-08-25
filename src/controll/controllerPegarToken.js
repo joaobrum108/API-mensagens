@@ -1,6 +1,6 @@
 const servicePegarToken = require("../services/servicePegarToken");
 
-class GetTokenUser {
+class pegarTokenUser {
     async pegarToken(req , res) {
         try {
             const resposta = await servicePegarToken.buscarToken(req, res);
@@ -14,4 +14,4 @@ class GetTokenUser {
     }
 }
 
-module.exports = new GetTokenUser();
+module.exports = new pegarTokenUser();
